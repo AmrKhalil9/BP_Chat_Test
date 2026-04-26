@@ -1,0 +1,12 @@
+{
+  "name": "-",
+  "description": "fake package for running build scripts",
+  "private": true,
+  "version": "0.1.0",
+  "dependencies": {
+    "terser": "^4.1.2"
+  },
+   "scripts": {
+   "terser": "terser"
+ }
+}

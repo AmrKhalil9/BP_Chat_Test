@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <link type="text/css" rel="stylesheet" href="./../css/form.css">
+        <script type="text/javascript">
+            SERVICE_PATTERN_CHAT_CONFIG = {
+                appId: '2222eb6b01a34428bd7559d71b07be3a',
+                apiUrl: 'https://georgey.brightpattern.com/clientweb/api/v1',
+                tenantUrl: 'georgey.brightpattern.com',
+                chatPath: 'https://georgey.brightpattern.com/clientweb/chat-client-v4/',
+                // appId: 'digiterra_test_2',
+                // apiUrl: 'https://new.brightpattern.com/clientweb/api/v1',
+                // tenantUrl: 'new.brightpattern.com',
+                // chatPath: '../',
+                chatHtmlName: 'client-chat-page-dev.html',
+                autostartChat: false,
+                autostartVideocall: false,
+
+                first_name: 'a',
+                last_name: 'a',
+                email: 'a',
+                // phone_number: '',
+            };
+            var __DEV__ = true
+        </script>
+
+        <!-- lib -->
+        <script type="text/javascript" src="./../js/libraries/jquery/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="./../js/libraries/json2/json2.min.js"></script>
+        <script type="text/javascript" src="./../js/libraries/togetherjs/togetherjs-min.js"></script>
+        <script type="text/javascript" src="./../js/libraries/platform/platform.min.js"></script>
+        <script type="text/javascript" src="./../js/libraries/adaptivecards/adaptivecards.min.js"></script>
+        <script type="text/javascript" src="./../js/libraries/adaptivecards/markdown-it.min.js"></script>
+        <script type="text/javascript" src="./../js/libraries/dompurify/purify.min.js"></script>
+
+        <!-- custom scripts chat-api-session -->
+        <script type="text/javascript" src="./../js/chat-api-session/sendXhr.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/prepareRequest.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/createSession.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/createSessionHandler.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/createSessionHandlerHelpers.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/printToConsole.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/handleHistoryEvents.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/handleEvents.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/startPoll.js"></script>
+        <script type="text/javascript" src="./../js/chat-api-session/variables.js"></script>
+
+        <!-- custom scripts snippet -->
+        <script type="text/javascript" src="./../js/snippet/helperFunctions.js"></script>
+        <script type="text/javascript" src="./../js/snippet/configurationSnippet.js"></script>
+        <script type="text/javascript" src="./../js/snippet/cobrowsing.js"></script>
+        <script type="text/javascript" src="./../js/snippet/openChat.js"></script>
+        <script type="text/javascript" src="./../js/snippet/keepOpenedState.js"></script>
+        <script type="text/javascript" src="./../js/snippet/checkAddFrame.js"></script>
+        <script type="text/javascript" src="./../js/snippet/chatUrl.js"></script>
+        <script type="text/javascript" src="./../js/snippet/togetherJsService.js"></script>
+        <script type="text/javascript" src="./../js/snippet/onInitialize.js"></script>
+        <script type="text/javascript" src="./../js/snippet/checkAvailability.js"></script>
+        <script type="text/javascript" src="./../js/snippet/handleAvailability.js"></script>
+        <script type="text/javascript" src="./../js/snippet/showNotification.js"></script>
+        <script type="text/javascript" src="./../js/snippet/draggable.js"></script>
+        <script type="text/javascript" src="./../js/snippet/build.js"></script>
+        <script type="text/javascript" src="./../js/snippet/variables.js"></script>
+
+        <!-- custom scripts constructor -->
+        <script type="text/javascript" src="./../js/constructor/configurationPreview.js"></script>
+        <script type="text/javascript" src="./../js/constructor/helpers.js"></script>
+        <script type="text/javascript" src="./../js/constructor/previewCode.js"></script>
+
+        <!-- custom scripts common -->
+        <script type="text/javascript" src="./../js/common/commonUtilService.js"></script>
+        <script type="text/javascript" src="./../js/common/htmlUtilService.js"></script>
+        <script type="text/javascript" src="./../js/common/constants.js"></script>
+        <script type="text/javascript" src="./../js/common/widgetConfiguration.js"></script>
+        <script type="text/javascript" src="./../js/common/proactiveOffer/proactiveOfferService.js"></script>
+        <script type="text/javascript" src="./../js/common/proactiveOffer/proactiveChatStarter.js"></script>
+        <script type="text/javascript" src="./../js/common/proactiveOffer/scaleProactiveOffer.js"></script>
+        <script type="text/javascript" src="./../js/common/proactiveOffer/buildProactiveOfferPreview.js"></script>
+
+        <!-- custom scripts client-chat-ui -->
+        <script type="text/javascript" src="./../js/client-chat-ui/i18n.js"></script>
+
+        <!-- custom scripts client-chat-page -->
+        <script type="text/javascript" src="./../js/client-chat-page/variables.js"></script>
+        <script type="text/javascript" src="./../js/client-chat-page/getUrlVars.js"></script>
+        <script type="text/javascript" src="./../js/client-chat-page/configurationChat.js"></script>
+        <script type="text/javascript" src="./../js/client-chat-page/safeEndSession.js"></script>
+        <script type="text/javascript" src="./../js/client-chat-page/updateScrollbar.js"></script>
+        <script type="text/javascript" src="./../js/client-chat-page/generateInputs.js"></script>
+        <script type="text/javascript" src="./../js/client-chat-page/connection.js"></script>
+
+        <!-- custom scripts root -->
+        <script type="text/javascript" src="./../js/preview.js"></script>
+        <script type="text/javascript" src="./../js/snippet.js"></script>
+        <script type="text/javascript" src="./../js/updateStyles.js"></script>
+        <script type="text/javascript" src="./../js/compareUrl.js"></script>
+
+        <script type="text/javascript" src="./../js/init.js"></script>
+
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build" name="chat-client-v4">
+
+    <!-- Setup -->
+    <property name="BUILD_DIR" value="./build"/>
+    <property name="STAGE_DIR" value="./stage"/>
+    <property name="YUI" value="../../../../ThirdParty/java/yuicompressor/yuicompressor-2.4.8.jar"/>
+
+    <!-- Files names for distribution -->
+    <property name="CHAT_OUTPUT_NAME" value="chat-widget" />
+    <property name="CHAT_LIB_OUTPUT_NAME" value="chat-lib" />
+    <property name="PAGE_LIB_OUTPUT_NAME" value="page-lib" />
+
+	<condition property="NPM" value="npm.cmd" else="npm">
+		<os family="windows" />
+	</condition>
+	
+    <target name="install-stage-tools">
+        <exec executable="node" failonerror="true" dir="${STAGE_DIR}">
+            <arg value="../../../../../ThirdParty/node/yarn/yarn-1.19.1.js"/>
+            <arg value="install"/>
+            <arg value="--offline"/>
+        </exec>
+        <mkdir dir="${BUILD_DIR}"/>
+    </target>
+
+    <!-- START BUILD JS FILES -->
+    <target name="concat-js" depends="install-stage-tools">
+        <concat destfile="${STAGE_DIR}/${CHAT_OUTPUT_NAME}.js">
+            <fileset dir="js" includes="**" excludes="libraries/**,chat-api-session.js,init.js,surflySession.js,check-session.js"/>
+        </concat>
+
+        <exec executable="${NPM}" failonerror="true" dir="${STAGE_DIR}">
+			<arg value="run"/>
+			<arg value="terser"/>
+			<arg value="--"/>				
+			<arg value="${CHAT_OUTPUT_NAME}.js"/>
+			<arg value="--compress"/>
+			<arg value="--output"/>
+			<arg value="../${BUILD_DIR}/${CHAT_OUTPUT_NAME}.min.js"/>
+        </exec>
+    </target>
+
+    <target name="concat-chat-lib" depends="install-stage-tools">
+        <exec executable="${NPM}" failonerror="true" dir="${STAGE_DIR}">
+            <arg value="run"/>
+			<arg value="terser"/>
+			<arg value="--"/>
+            <arg value="../js/libraries/jquery/jquery-3.2.1.min.js"/>
+            <arg value="../js/libraries/jquery-ui-1.11.1/jquery-ui-1.11.1.min.js"/>
+            <arg value="../js/libraries/platform/platform.min.js"/>
+            <arg value="../js/libraries/json2/json2.min.js"/>
+            <arg value="../js/libraries/XDomainRequest/jQuery.XDomainRequest.min.js"/>
+            <arg value="../js/libraries/datetime/datetime.min.js"/>
+            <arg value="../js/libraries/perfect-scrollbar/perfect-scrollbar.min.js"/>
+            <arg value="../js/libraries/emoji/js/config.js"/>
+            <arg value="../js/libraries/emoji/js/util.js"/>
+            <arg value="../js/libraries/emoji/js/jquery.emojiarea.js"/>
+            <arg value="../js/libraries/emoji/js/emoji-picker.js"/>
+            <arg value="../js/libraries/adaptivecards/adaptivecards.min.js"/>
+        	<arg value="../js/libraries/adaptivecards/markdown-it.min.js"/>
+            <arg value="../js/libraries/dompurify/purify.min.js"/>
+            <arg value="--compress"/>
+            <arg value="--output"/>
+            <arg value="../${BUILD_DIR}/${CHAT_LIB_OUTPUT_NAME}.min.js"/>
+        </exec>
+    </target>
+
+    <target name="concat-page-lib">
+        <concat destfile="${BUILD_DIR}/${PAGE_LIB_OUTPUT_NAME}.min.js">
+            <fileset file="js/libraries/json2/json2.min.js"/>
+            <fileset file="js/libraries/platform/platform.min.js"/>
+        </concat>
+    </target>
+
+    <!-- COPY TOGETHER JS -->
+    <target name="copy-together-js">
+        <copy todir="${BUILD_DIR}/togetherjs">
+            <!--<fileset dir="js/libraries/togetherjs" excludes="togetherjs.js, togetherjs-min.js"/>-->
+            <fileset dir="js/libraries/togetherjs"/>
+        </copy>
+    </target>
+    <!-- COPY TOGETHER JS -->
+
+    <!-- END BUILD JS FILES -->
+
+    <!-- START BUILD CSS FILES -->
+    <target name="concat-css">
+        <concat destfile="${BUILD_DIR}/${CHAT_OUTPUT_NAME}.css">
+            <fileset file="css/wrong.css"/>
+            <fileset file="css/chat.css"/>
+            <fileset file="css/proactive-offer.css"/>
+            <fileset file="css/override.css"/>
+            <fileset file="css/minimized.css"/>
+        </concat>
+        <copy todir="${BUILD_DIR}">
+            <fileset dir="${BUILD_DIR}"/>
+            <globmapper from="${CHAT_OUTPUT_NAME}.css" to="${CHAT_OUTPUT_NAME}.min.css"/>
+        </copy>
+        <java jar="${YUI}" fork="true">
+            <arg value="-o" />
+            <arg value="${BUILD_DIR}/${CHAT_OUTPUT_NAME}.min.css" />
+            <arg value="--line-break"/>
+            <arg value="8000"/>
+            <arg value="${BUILD_DIR}/${CHAT_OUTPUT_NAME}.min.css"/>
+        </java>
+    </target>
+    <!-- END BUILD CSS FILES -->
+
+    <target name="clean">
+        <delete dir="build" failonerror="false" />
+    </target>
+
+    <target name="build-js" depends="concat-js,concat-chat-lib,concat-page-lib,copy-together-js"/>
+    <target name="build-css" depends="concat-css"/>
+
+    <target name="build" depends="clean,build-js,build-css"/>
+
+</project>

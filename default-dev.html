@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<!--___PRODUCT_BUILD___ (___PRODUCT_COMMENTS___) ___PRODUCT_DATE___-->
+
+<html>
+    <head>
+        <title>Chat Test Page</title>
+    </head>
+    <body>
+
+        <!-- You have to put this piece of JavaScript code into your web page -->
+
+        <script type="text/javascript">
+            SERVICE_PATTERN_CHAT_CONFIG = {
+                appId: '1',
+                apiUrl: 'http://avl-mac-16:9098/clientweb/api/v1',
+                clientId: 'WebChat',            /* no need to change this */
+                tenantUrl: 'example.com',
+                chatPath: 'http://avl-mac-16:9098/clientweb/chat-client-v4/',
+
+                // Default customer data, it can be collected on current site's context
+                first_name: 'Donald',
+                last_name: 'Trump',
+                email: 'donald',
+                phone_number: '123',
+                
+                callback:false,
+
+                sound_notification: true,
+                sound_notification_file: 'media/ding.mp3',
+            };
+
+        </script>
+        <!-- lib -->
+        <script type="text/javascript" src="./js/libraries/jquery/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="./js/libraries/json2/json2.min.js"></script>
+        <script type="text/javascript" src="./js/libraries/togetherjs/togetherjs-min.js"></script>
+        <script type="text/javascript" src="./js/libraries/platform/platform.min.js"></script>
+        <script type="text/javascript" src="./js/libraries/adaptivecards/adaptivecards.min.js"></script>
+        <script type="text/javascript" src="./js/libraries/adaptivecards/markdown-it.min.js"></script>
+        <script type="text/javascript" src="./js/libraries/dompurify/purify.min.js"></script>
+
+        <!-- custom scripts chat-api-session -->
+        <script type="text/javascript" src="./js/chat-api-session/sendXhr.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/prepareRequest.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/createSession.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/createSessionHandler.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/createSessionHandlerHelpers.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/printToConsole.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/handleHistoryEvents.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/handleEvents.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/startPoll.js"></script>
+        <script type="text/javascript" src="./js/chat-api-session/variables.js"></script>
+
+        <!-- custom scripts snippet -->
+        <script type="text/javascript" src="./js/snippet/helperFunctions.js"></script>
+        <script type="text/javascript" src="./js/snippet/configurationSnippet.js"></script>
+        <script type="text/javascript" src="./js/snippet/openChat.js"></script>
+        <script type="text/javascript" src="./js/snippet/keepOpenedState.js"></script>
+        <script type="text/javascript" src="./js/snippet/checkAddFrame.js"></script>
+        <script type="text/javascript" src="./js/snippet/chatUrl.js"></script>
+        <script type="text/javascript" src="./js/snippet/togetherJsService.js"></script>
+        <script type="text/javascript" src="./js/snippet/onInitialize.js"></script>
+        <script type="text/javascript" src="./js/snippet/checkAvailability.js"></script>
+        <script type="text/javascript" src="./js/snippet/handleAvailability.js"></script>
+        <script type="text/javascript" src="./js/snippet/showNotification.js"></script>
+        <script type="text/javascript" src="./js/snippet/draggable.js"></script>
+        <script type="text/javascript" src="./js/snippet/build.js"></script>
+        <script type="text/javascript" src="./js/snippet/variables.js"></script>
+
+        <!-- custom scripts constructor -->
+        <script type="text/javascript" src="./js/constructor/configurationPreview.js"></script>
+        <script type="text/javascript" src="./js/constructor/helpers.js"></script>
+        <script type="text/javascript" src="./js/constructor/previewCode.js"></script>
+
+        <!-- custom scripts common -->
+        <script type="text/javascript" src="./js/common/commonUtilService.js"></script>
+        <script type="text/javascript" src="./js/common/htmlUtilService.js"></script>
+        <script type="text/javascript" src="./js/common/constants.js"></script>
+        <script type="text/javascript" src="./js/common/widgetConfiguration.js"></script>
+        <script type="text/javascript" src="js/common/proactiveOffer/proactiveOfferService.js"></script>
+        <script type="text/javascript" src="./js/common/proactiveOffer/proactiveChatStarter.js"></script>
+        <script type="text/javascript" src="./js/common/proactiveOffer/scaleProactiveOffer.js"></script>
+        <script type="text/javascript" src="./js/common/proactiveOffer/buildProactiveOfferPreview.js"></script>
+
+        <!-- custom scripts client-chat-page -->
+        <script type="text/javascript" src="./js/client-chat-page/variables.js"></script>
+        <script type="text/javascript" src="./js/client-chat-page/getUrlVars.js"></script>
+        <script type="text/javascript" src="./js/client-chat-page/configurationChat.js"></script>
+        <script type="text/javascript" src="./js/client-chat-page/safeEndSession.js"></script>
+        <script type="text/javascript" src="./js/client-chat-page/updateScrollbar.js"></script>
+        <script type="text/javascript" src="./js/client-chat-page/generateInputs.js"></script>
+        <script type="text/javascript" src="./js/client-chat-page/connection.js"></script>
+
+        <!-- custom scripts root -->
+        <script type="text/javascript" src="./js/preview.js"></script>
+        <script type="text/javascript" src="./js/snippet.js"></script>
+        <script type="text/javascript" src="./js/updateStyles.js"></script>
+        <script type="text/javascript" src="./js/compareUrl.js"></script>
+
+        <script type="text/javascript" src="./js/init.js"></script>
+    </body>
+</html>
